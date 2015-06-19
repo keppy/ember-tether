@@ -15,7 +15,9 @@ export default Ember.Component.extend({
   optimizations: null,
 
   didInsertElement: function() {
-    this.addTether();
+    Ember.run.scheduleOnce('afterRender', this, function() {
+      this.addTether();
+    });
   },
 
   willDestroyElement: function() {
